@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+                <!-- row -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="stat-widget-two card-body">
+                                    <div class="stat-content">
+                                        <div class="stat-text">Nombre d'étudient </div>
+                                        <div class="stat-digit"> <i class="fa fa-users"></i>{{ students.count }}</div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success w-70" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="stat-widget-two card-body">
+                                    <div class="stat-content">
+                                        <div class="stat-text">Déja Soldé</div>
+                                        <div class="stat-digit"><i class="fa fa-check"></i>0</div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-primary w-75" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="stat-widget-two card-body">
+                                    <div class="stat-content">
+                                        <div class="stat-text">Non Soldé</div>
+                                        <div class="stat-digit"> <i class="fa fa-times"></i>0</div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-warning w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="stat-widget-two card-body">
+                                    <div class="stat-content">
+                                        <div class="stat-text">Nombre de photo</div>
+                                        <div class="stat-digit"> <i class="fa fa-image"></i>150</div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-danger w-65" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /# card -->
+                        </div>
+                        <!-- /# column -->
+                        <a class="btn btn-primary mb-4 float-right" href="{% url 'create' %}">Ajouter un étudient</a>
+                            <div class="table-responsive card p-3">
+                                <table class="table table-striped mt-4 table-hover">
+                                    <thead class="thead-primary">
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Téléphone</th>
+                                            <th>Photos achetées</th>
+                                            <th>Code de parrainage</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for student in students %}
+                                            <tr>
+                                                <td>{{ student.first_name|title }}</td>
+                                                <td>{{ student.last_name|title }}</td>
+                                                <td>+225{{ student.phone }}</td>
+                                                <td>{{ student.num_of_pic }}</td>
+                                                <td>{{ student.code_parainage }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                    </div>
+
+{% endblock content %}
